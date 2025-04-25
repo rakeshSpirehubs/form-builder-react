@@ -1,4 +1,4 @@
-interface styles {
+interface IStyles {
   backgroundColor?: string;
   color?: string;
   border?: string;
@@ -6,7 +6,7 @@ interface styles {
   borderStyle?: string;
 }
 
-interface labelStyles {
+interface ILabelStyles {
   backgroundColor?: string;
   color?: string;
   border?: string;
@@ -14,16 +14,16 @@ interface labelStyles {
   borderStyle?: string;
 }
 
-export default interface FormBuilderInterface {
+export default interface IFormBuilderField {
   id: number;
   type: string;
   label: string;
   placeholder?: string;
   icon: any;
   serialNumber?: string;
-  styles?: styles;
+  styles?: IStyles;
   isRequired?: boolean;
-  labelStyles?: labelStyles;
+  labelStyles?: ILabelStyles;
   selectOptions?: string[];
   radioOptions?: string[];
   checkboxGroupOption?: { label: string }[];

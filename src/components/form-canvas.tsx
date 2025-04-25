@@ -2,7 +2,7 @@ import { Card } from "./ui/card";
 import { DroppableZone } from "./droppable-zone";
 import { FieldRenderer } from "./field-renderer";
 import UpdateFormName from "./update-form-name";
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { Button } from "./ui/button";
 import { SquarePen } from "lucide-react";
 import {
@@ -27,13 +27,13 @@ import { Switch } from "./ui/switch";
 interface FormCanvasProps {
   formName: string;
   formDescription: string;
-  setSelectedFormFields: (prev: FieldTypeInterface[]) => void;
-  selectedFormFields: FieldTypeInterface[];
+  setSelectedFormFields: (prev: IFormBuilderField[]) => void;
+  selectedFormFields: IFormBuilderField[];
   isOpenFormNameDialog: boolean;
   handleCloseFormNameDialog: () => void;
   handleOpenFormNameDialog: () => void;
   handleUpdateFormName: (name: string, description: string) => void;
-  handleSetting: (field: FieldTypeInterface) => void;
+  handleSetting: (field: IFormBuilderField) => void;
   handleDeleteFields: (index: number) => void;
   globalSettings: {
     isLabel: boolean;
@@ -78,7 +78,7 @@ export const FormCanvas = ({
   };
 
   return (
-    <Card className="w-full md:w-[50%] lg:w-[60%] shadow-none p-3 h-full max-h-[550px] overflow-hidden">
+    <Card className="w-full md:w-[50%] lg:w-[60%] shadow-none p-3 h-full max-h-[70vh] overflow-hidden">
       <div className="flex justify-between items-center">
         <div>
           <p className="text-lg font-semibold">{formName}</p>
@@ -125,9 +125,10 @@ export const FormCanvas = ({
       {/* Dragged Form Field */}
       <DroppableZone>
         {selectedFormFields.length === 0 ? (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex flex-col justify-center items-center h-full">
+            <p className="text-lg font-semibold">No form field selected</p>
             <p className="text-sm text-muted-foreground">
-              Drag a field type here to start building your form
+              Select and drag a field type here to begin building your form
             </p>
           </div>
         ) : (
@@ -140,9 +141,9 @@ export const FormCanvas = ({
               items={fieldIds}
               strategy={verticalListSortingStrategy}
             >
-              <div className="flex flex-col gap-4 h-full max-h-[500px] overflow-y-auto pr-3">
+              <div className="flex flex-col gap-4 h-full max-h-[70vh] overflow-y-auto pr-3">
                 {selectedFormFields.map(
-                  (field: FieldTypeInterface, index: number) => (
+                  (field: IFormBuilderField, index: number) => (
                     <SortableFieldItem
                       key={field.serialNumber || index}
                       id={field.id ?? `field-${index}`}
@@ -166,9 +167,9 @@ export const FormCanvas = ({
 
 interface SortableFieldItemProps {
   id: string | number;
-  field: FieldTypeInterface;
+  field: IFormBuilderField;
   index: number;
-  handleSetting: (field: FieldTypeInterface) => void;
+  handleSetting: (field: IFormBuilderField) => void;
   handleDeleteFields: (index: number) => void;
   isLabel: Boolean;
   isOutLine: Boolean;

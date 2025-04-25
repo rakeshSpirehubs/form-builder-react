@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/table";
 import { deleteForm } from "@/redux/slices/published-forms";
 import { RootState } from "@/redux/store";
-import { Eye, Trash } from "lucide-react";
+import { Eye, Plus, Trash } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FormList: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,52 +24,62 @@ const FormList: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 py-2 px-4">
-      <h1 className="text-2xl font-semibold">Form List</h1>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Action</TableHead>
-          </TableRow>
-        </TableHeader>
+    <div className="bg-white rounded-lg flex flex-col gap-5 py-2 px-4 min-h-72">
+      {allForms?.length > 0 ? (
+        <div>
+        <h1 className="text-2xl font-semibold mb-4">Form List</h1>
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-100">
+              <TableHead>Name</TableHead>
+              <TableHead>Description</TableHead>
+              <TableHead className="text-right">Action</TableHead>
+            </TableRow>
+          </TableHeader>
 
-        <TableBody>
-          {allForms?.length > 0 ? (
-            allForms?.map((form, index) => (
-              <TableRow key={index}>
-                <TableCell>{form?.name}</TableCell>
-                <TableCell>{form?.description}</TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      className="cursor-pointer"
-                      variant="outline"
-                      onClick={() => navigate(`/preview-form/${index}`)}
-                    >
-                      <Eye />
-                    </Button>
-                    <Button
-                      className="cursor-pointer"
-                      variant="outline"
-                      onClick={() => handleDeleteForm(index)}
-                    >
-                      <Trash className="text-red-600" />
-                    </Button>
-                  </div>
+          <TableBody>
+            {allForms?.length > 0 ? (
+              allForms?.map((form, index) => (
+                <TableRow key={index}>
+                  <TableCell>{form?.name}</TableCell>
+                  <TableCell>{form?.description}</TableCell>
+                  <TableCell>
+                    <div className="flex items-center justify-end gap-2">
+                      <Button
+                        className="cursor-pointer"
+                        variant="outline"
+                        onClick={() => navigate(`/preview-form/${index}`)}
+                      >
+                        <Eye />
+                      </Button>
+                      <Button
+                        className="cursor-pointer"
+                        variant="outline"
+                        onClick={() => handleDeleteForm(index)}
+                      >
+                        <Trash className="text-red-600" />
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={3} className="text-center">
+                  No form added!
                 </TableCell>
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={3} className="text-center">
-                No form added!
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      ):(
+        <div className="h-full min-h-72 text-center flex flex-col justify-center items-center">
+          <p className="text-2xl font-semibold">No forms created yet</p>
+          <p className="text-muted-foreground mb-4">Start building your dynamic form</p>
+          <Link to="/create-form"><Button><Plus />Create Form</Button></Link>
+        </div>
+      )}
     </div>
   );
 };

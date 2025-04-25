@@ -2,11 +2,11 @@ import PublishedFormInterface from "@/types/published-forms";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface CounterState {
+export interface IPublishedFormState {
   allForms: PublishedFormInterface[];
 }
 
-const initialState: CounterState = {
+const initialState: IPublishedFormState = {
   allForms: [],
 };
 

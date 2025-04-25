@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Checkbox } from "./ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Switch } from "./ui/switch";
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { Textarea } from "./ui/textarea";
 import {
   Select,
@@ -17,9 +17,9 @@ import {
 import { cn } from "@/lib/utils";
 
 interface FieldRendererProps {
-  field: FieldTypeInterface;
+  field: IFormBuilderField;
   index: number;
-  handleSetting: (field: FieldTypeInterface) => void;
+  handleSetting: (field: IFormBuilderField) => void;
   handleDeleteFields: (index: number) => void;
   dragHandleProps?: {
     attributes: any;

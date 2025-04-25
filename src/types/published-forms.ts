@@ -1,11 +1,11 @@
-import FormBuilderInterface from "./form-builder";
+import IFormBuilderField from "./form-builder";
 
 interface PublishedFormInterface {
   name: string;
-  isLabel: Boolean;
-  isOutLine: Boolean;
+  isLabel: boolean;
+  isOutLine: boolean;
   description: string;
-  fields: FormBuilderInterface[];
+  fields: IFormBuilderField[];
 }
 
 export default PublishedFormInterface;

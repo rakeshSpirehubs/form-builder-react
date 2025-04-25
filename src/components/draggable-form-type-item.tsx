@@ -1,9 +1,9 @@
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { useDraggable } from "@dnd-kit/core";
 import { Button } from "./ui/button";
 import { GripVertical } from "lucide-react";
 
-const DraggableFormTypeItem = ({ item }: { item: FieldTypeInterface }) => {
+const DraggableFormTypeItem = ({ item }: { item: IFormBuilderField }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: item.id,
     data: item,

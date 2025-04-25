@@ -1,4 +1,4 @@
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import {
   Calendar1,
   Check,
@@ -13,7 +13,7 @@ import {
   Type,
 } from "lucide-react";
 
-export const formFieldTypes: FieldTypeInterface[] = [
+export const formFieldTypes: IFormBuilderField[] = [
   {
     id: 1,
     type: "heading",

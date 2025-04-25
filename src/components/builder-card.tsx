@@ -6,7 +6,7 @@ import { FormCanvas } from "./form-canvas";
 import UpdateSettings from "./update-fields-setting";
 import FieldType from "@/types/form-builder";
 import { Button } from "./ui/button";
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { FormFieldItem } from "./form-field-item";
 import { useDispatch } from "react-redux";
 import { publishNewForm } from "@/redux/slices/published-forms";
@@ -190,7 +190,7 @@ const BuilderCard: React.FC = () => {
               </div>
 
               {selectedFormFields.map(
-                (field: FieldTypeInterface, index: number) => (
+                (field: IFormBuilderField, index: number) => (
                   <FormFieldItem
                     key={field.serialNumber || index}
                     field={field}

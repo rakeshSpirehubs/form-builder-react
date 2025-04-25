@@ -4,12 +4,10 @@ import Header from "./header";
 const CommonLayout: React.FC = () => {
   return (
     <main className="h-screen w-full bg-gray-200 overflow-hidden pb-10">
-      <div className="flex flex-col justify-between gap-10 h-[90vh]">
+      <div className="h-screen flex flex-col gap-10">
         <Header />
-        <div className="container m-auto pb-10">
-          <div className="bg-white rounded-lg">
-            <Outlet />
-          </div>
+        <div className="container mx-auto pb-10">
+          <Outlet />
         </div>
       </div>
     </main>

@@ -1,4 +1,4 @@
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import DraggableFormTypeItem from "./draggable-form-type-item";
 import { Card } from "./ui/card";
 import { formFieldTypes } from "./form-field-types";
@@ -15,7 +15,7 @@ export const FieldPalette = () => {
 
       {/* All form field */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {formFieldTypes.map((item: FieldTypeInterface) => (
+        {formFieldTypes.map((item: IFormBuilderField) => (
           <DraggableFormTypeItem key={item.id} item={item} />
         ))}
       </div>

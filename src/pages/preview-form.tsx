@@ -54,7 +54,7 @@ const PreviewForm = () => {
   };
 
   return (
-    <div className="max-w-[600px] m-auto p-10">
+    <div className="max-w-[600px] m-auto p-5 bg-white rounded-lg">
       <div className="border flex flex-col gap-5 py-4 px-6 rounded-lg">
         <div className="w-full flex items-center justify-between gap-2">
           <div className="flex flex-col gap-0">

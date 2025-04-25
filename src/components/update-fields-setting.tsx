@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useState } from "react";
@@ -15,9 +15,9 @@ import { CirclePlus, X } from "lucide-react";
 
 interface UpdateSettingProps {
   isOpen: boolean;
-  selectedField: FieldTypeInterface | undefined;
+  selectedField: IFormBuilderField | undefined;
   closeUpdateDialog: () => void;
-  allSelectedFormFields: FieldTypeInterface[];
+  allSelectedFormFields: IFormBuilderField[];
   setSelectedFormFields: any;
 }
 
@@ -47,7 +47,7 @@ const UpdateSettings: React.FC<UpdateSettingProps> = ({
     const index = allSelectedFormFields?.findIndex(
       (item) => item.serialNumber === selectedField?.serialNumber
     );
-    allSelectedFormFields[index] = selectedFieldData as FieldTypeInterface;
+    allSelectedFormFields[index] = selectedFieldData as IFormBuilderField;
     setSelectedFormFields([...allSelectedFormFields]);
     closeUpdateDialog();
   };
@@ -224,10 +224,11 @@ const UpdateSettings: React.FC<UpdateSettingProps> = ({
           {requiredElements.includes(selectedFieldData?.type as string) && (
             <div className="flex gap-2 col-span-full">
               <Checkbox
+                id="isRequired"
                 checked={selectedFieldData?.isRequired as boolean}
                 onCheckedChange={(e) => handleUpdateValues(e, "isRequired")}
               />
-              <Label id="label">Is Required ?</Label>
+              <Label id="label" htmlFor="isRequired">Is Required ?</Label>
             </div>
           )}
 

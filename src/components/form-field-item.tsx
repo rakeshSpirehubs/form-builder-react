@@ -3,7 +3,7 @@ import { Input } from "./ui/input";
 import { Checkbox } from "./ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Switch } from "./ui/switch";
-import FieldTypeInterface from "@/types/form-builder";
+import IFormBuilderField from "@/types/form-builder";
 import { cn } from "@/lib/utils";
 import { Textarea } from "./ui/textarea";
 import {
@@ -16,7 +16,7 @@ import {
 } from "./ui/select";
 
 interface FormFieldItemProps {
-  field: FieldTypeInterface;
+  field: IFormBuilderField;
   isLabel: Boolean;
   isOutLine: Boolean;
 }
