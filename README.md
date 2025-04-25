@@ -11,7 +11,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:rakeshSpirehubs/form-builder.git
+   git clone git@github.com:rakeshSpirehubs/form-builder-react.git
    ```
 
 2. **Install dependencies:**
